@@ -224,6 +224,10 @@
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
 
+% For elements of publication
+%\newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\pubsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape \color{awesome} #1}}
+
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{awesome} #1}}
 \newcommand*{\recipientaddressstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
@@ -603,11 +607,11 @@
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \setlength\leftskip{0.2cm}
-    \subentrytitlestyle{#2} & \ifthenelse{\equal{#1}{}}
+    \subentrytitlestyle{#1} & \ifthenelse{\equal{#2}{}}
       {\subentrydatestyle{#3}}{}
-    \ifthenelse{\equal{#1}{}}
+    \ifthenelse{\equal{#2}{}}
       {}
-      {\subentrypositionstyle{#1} & \subentrydatestyle{#3} \\}
+      {\subentrypositionstyle{#2} & \subentrydatestyle{#3} \\}
     \ifthenelse{\equal{#4}{}}
       {}
       {\multicolumn{2}{L{17.0cm}}{\subdescriptionstyle{#4}} \\}
