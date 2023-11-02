@@ -4,7 +4,7 @@
 # Davide Gerosa (2021) https://github.com/dgerosa
 
 #edited by Alessandro Santini (2023) to compile the CV
-name: writeapaper
+name: writeCV
 on: [push]
 jobs:
   CV:
