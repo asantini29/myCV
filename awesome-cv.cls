@@ -95,8 +95,9 @@
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
 %-------------------------------------------------------------------------------
-% Configure a directory location for fonts(default: 'fonts/')
-\newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
+% Configure a directory location for fonts(default: '../fonts/', i.e. the
+% shared fonts/ at the repo root, as every document lives in its own subfolder)
+\newcommand*{\fontdir}[1][../fonts/]{\def\@fontdir{#1}}
 \fontdir
 
 

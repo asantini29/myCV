@@ -5,7 +5,7 @@ import re
 # Configuration
 INSPIRE_QUERY = "author:Alessandro.Santini.2"
 API_URL = "https://inspirehep.net/api/literature"
-OUTPUT_FILE = "cv-sections/publications.tex"
+OUTPUT_FILE = "cv/cv-sections/publications.tex"
 MY_NAME_BOLD = r"\textbf{Santini, A.}"
 
 def get_publications(query):

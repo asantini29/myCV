@@ -28,12 +28,13 @@ jobs:
           sudo apt-get install -y texlive-xetex texlive-fonts-extra texlive-latex-extra
       
       - name: Build CV
+        # Default build is the full CV; pass --short to publish the short one
         run: python3 build_cv.py
       
       - name: Prepare deployment directory
         run: |
           mkdir -p deploy
-          cp resume_cv.pdf deploy/
+          cp cv/resume_cv.pdf deploy/
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

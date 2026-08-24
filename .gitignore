@@ -12,6 +12,19 @@
 *.dvi
 *-converted-to.*
 
+## Latexmk & XeLaTeX build artifacts:
+*.fdb_latexmk
+*.xdv
+*.synctex.gz
+*.synctex(busy)
+missfont.log
+
+## Bibliography artifacts:
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+
 ### Editor ###
 ## Vim & Emacs temp files:
 .*sw[op]
@@ -23,3 +36,8 @@
 
 ### Build ###
 deploy/
+
+## Built documents:
+## CI compiles the CV and publishes it to gh-pages, so PDFs are not tracked.
+## Use `git add -f` for a PDF that is genuinely a source asset (e.g. a figure).
+*.pdf
