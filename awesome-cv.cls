@@ -370,7 +370,7 @@
   \ifthenelse{\equal{#1}{}}{}{\def\@letterenclname{#1}}
   \def\@letterenclosure{#2}
 }
-
+ \newcommand*{\lettersignature}[1]{\def\@lettersignature{#1}}
 
 %-------------------------------------------------------------------------------
 %                Commands for extra
@@ -708,14 +708,34 @@
 
 % Define a closing of the cover letter
 % Usage: \makeletterclosing
+% \newcommand*{\makeletterclosing}{%
+%   \vspace{3.4mm}
+%   \lettertextstyle{\@letterclosing} \\
+%   \letternamestyle{\@firstname\ \@lastname}
+%   \ifthenelse{\isundefined{\@letterenclosure}}
+%     {}
+%     {%
+%       \\\\
+%       \letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
+%     }
+% }
+
 \newcommand*{\makeletterclosing}{%
-  \vspace{3.4mm}
-  \lettertextstyle{\@letterclosing} \\
-  \letternamestyle{\@firstname\ \@lastname}
-  \ifthenelse{\isundefined{\@letterenclosure}}
-    {}
-    {%
-      \\\\
-      \letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
+      \vspace{3.4mm}
+      \lettertextstyle{\@letterclosing} \\
+      \ifthenelse{\isundefined{\@lettersignature}}
+        {\letternamestyle{\@firstname\ \@lastname}%
+        }
+        {%
+          \\
+          %\vspace{5mm}%
+          %\hspace{-5mm}
+          \includegraphics[height=1cm]{\@lettersignature}%
+        }%
+      \ifthenelse{\isundefined{\@letterenclosure}}
+        {}
+        {%
+          \\\\
+          \letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
+        }%
     }
-}
