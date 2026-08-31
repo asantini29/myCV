@@ -190,8 +190,10 @@
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
+\newcommand*{\cvheaderfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
+\newcommand*{\cvheaderlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
+\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{18pt}{1em}\headerfontlight\color{graytext} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\fontsize{18pt}{1em}\headerfont\bfseries\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
@@ -230,7 +232,7 @@
 \newcommand*{\pubsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape \color{awesome} #1}}
 
 % For elements of the cover letter
-\newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{awesome} #1}}
+\newcommand*{\lettersectionstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{awesome} #1}}
 \newcommand*{\recipientaddressstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\recipienttitlestyle}[1]{{\fontsize{11.5pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\lettertitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfontlight\bfseries\color{darktext} \underline{#1}}}
@@ -410,8 +412,13 @@
 %                Commands for elements of CV structure
 %-------------------------------------------------------------------------------
 % Define a header for CV
-% Usage: \makecvheader
-\newcommand*{\makecvheader}[1][C]{%
+% Usage: \makecvheader[<align>][<mode>]
+%   <align>: C (default), L or R
+%   <mode> : CV (default) uses the large CV name size, any other value
+%            (e.g. letter) uses the smaller cover letter name size
+% \newcommand supports a single optional argument, so xparse's
+% \NewDocumentCommand is used to declare the second one.
+\NewDocumentCommand{\makecvheader}{ O{C} O{CV} }{%
   \newcommand*{\drawphoto}{%
     \ifthenelse{\isundefined{\@photo}}{}{%
       \newlength{\photodim}
@@ -440,7 +447,9 @@
   \end{minipage}
   \begin{minipage}[c]{\headertextwidth}
     \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
-    \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
+    \ifthenelse{\equal{#2}{CV}}%
+      {\cvheaderfirstnamestyle{\@firstname}\cvheaderlastnamestyle{{}\acvHeaderNameDelim\@lastname}}%
+      {\headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}}%
     \\[\acvHeaderAfterNameSkip]%
     \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
     \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
@@ -681,17 +690,17 @@
 % Define a section for the cover letter
 % Usage: \lettersection{<section-title>}
 \newcommand{\lettersection}[1]{%
-  \par\addvspace{2.5ex}
+  \par\addvspace{0.1ex}
   \phantomsection{}
   \lettersectionstyle{#1}
   \color{text}\vhrulefill{0.9pt}
-  \par\nobreak\addvspace{0.4ex}
+  \par\nobreak\addvspace{0.1ex}
 }
 
 % Define a title of the cover letter
 % Usage: \makelettertitle
 \newcommand*{\makelettertitle}{%
-  \vspace{8.4mm}
+  \vspace{5mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
@@ -701,7 +710,7 @@
     \recipientaddressstyle{\@recipientaddress} \\
   \end{singlespace}
   \ifthenelse{\isundefined{\@lettertitle}}
-    {}
+    {\vspace{-2ex}}
     {\lettertitlestyle{\@lettertitle} \\}
   \lettertextstyle{\@letteropening}
 }
@@ -721,14 +730,14 @@
 % }
 
 \newcommand*{\makeletterclosing}{%
-      \vspace{3.4mm}
+      \vspace{0mm}
       \lettertextstyle{\@letterclosing} \\
       \ifthenelse{\isundefined{\@lettersignature}}
         {\letternamestyle{\@firstname\ \@lastname}%
         }
         {%
-          \\
-          %\vspace{5mm}%
+          %\\
+          \vspace{5mm}%
           %\hspace{-5mm}
           \includegraphics[height=1cm]{\@lettersignature}%
         }%
