@@ -230,6 +230,7 @@
 % For elements of publication
 %\newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\pubsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape \color{awesome} #1}}
+\newcommand*{\publiststyle}[1]{{\fontsize{11pt}{1em}\bodyfontlight\slshape \color{awesome} #1}}
 
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{awesome} #1}}
@@ -238,6 +239,8 @@
 \newcommand*{\lettertitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfontlight\bfseries\color{darktext} \underline{#1}}}
 \newcommand*{\letterdatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\lettertextstyle}{\fontsize{11pt}{1.4em}\bodyfontlight\upshape\color{text}}
+\newcommand*{\doctitlestyle}[1]{{\fontsize{17pt}{1.2em}\bodyfont\bfseries\color{awesome} #1}}
+\newcommand*{\docdatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\letternamestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\letterenclosurestyle}[1]{{\fontsize{11pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
 
@@ -748,3 +751,77 @@
           \letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
         }%
     }
+
+%-------------------------------------------------------------------------------
+%                Commands for general documents
+%   For documents that are neither a CV nor a letter - research statements,
+%   proposals, teaching statements: a title, sections and running body text,
+%   without any of the letter machinery (recipient, opening, closing).
+%-------------------------------------------------------------------------------
+
+% Define a title for a general document
+% Usage: \doctitle{<title>}
+\newcommand*{\doctitle}[1]{\def\@doctitle{#1}}
+
+% Define a date for a general document, printed under the title
+% Usage: \docdate{<date>}
+\newcommand*{\docdate}[1]{\def\@docdate{#1}}
+
+% Print the title block of a general document
+% Usage: \makedoctitle
+\newcommand*{\makedoctitle}{%
+  \vspace{4mm}
+  \begin{center}
+    \doctitlestyle{\@doctitle}
+    \ifthenelse{\isundefined{\@docdate}}
+      {}
+      {\\ \vspace{1.5mm} \docdatestyle{\@docdate}}
+  \end{center}
+  \vspace{1mm}
+}
+
+% Define the body of a general document
+% Same text style as the cover letter, so all documents read alike
+\newenvironment{cvdocument}{%
+  \lettertextstyle
+}{%
+}
+
+% Define a section for a general document
+% Usage: \docsection{<section-title>}
+\newcommand{\docsection}[1]{\lettersection{#1}}
+
+% Switch the body text to the standard LaTeX article font: Latin Modern Roman
+% at regular weight, instead of the template's light-weight Source Sans Pro.
+% Section titles, the header and the footer keep the template's own fonts, so
+% the document still matches the CV. Call it in the preamble, after
+% \documentclass; it affects the cvletter and cvdocument environments.
+% The faces are loaded by file name because Latin Modern is not registered
+% with the system font database.
+% The optional arguments set the body size and its baselineskip. The defaults
+% reproduce the leading of a standard 11pt article (10.95pt on 13.6pt), rather
+% than the looser 1.4em of the template, so no \linespread is needed. If you
+% change the size, article's own pairings are 10pt/12pt and 12pt/14.5pt.
+% Usage: \useArticleBodyFont[<size>][<baselineskip>]
+\NewDocumentCommand{\useArticleBodyFont}{O{11pt} O{13.6pt}}{%
+  \newfontfamily\articletextfont{lmroman10-regular.otf}[
+    ItalicFont     = lmroman10-italic.otf,
+    BoldFont       = lmroman10-bold.otf,
+    BoldItalicFont = lmroman10-bolditalic.otf,
+    Ligatures      = TeX,
+  ]%
+  % Footnotes are typeset after \reset@font, which falls back to the class's
+  % default family, so prepend the body family to \@makefntext. The size stays
+  % \footnotesize, as in a standard article.
+  \pretocmd{\@makefntext}{\articletextfont\mdseries}{}{}%
+  % \publiststyle is used inline, mid-sentence, so it has to follow the body
+  % family too. Keep the awesome color and the italics, drop the explicit
+  % \fontsize so it inherits the body size and leading.
+  \renewcommand*{\publiststyle}[1]{{\articletextfont\itshape\color{awesome} ##1}}%
+  \def\@articlebodysize{#1}%
+  \def\@articlebodyleading{#2}%
+  \renewcommand*{\lettertextstyle}{%
+    \fontsize{\@articlebodysize}{\@articlebodyleading}%
+    \articletextfont\mdseries\upshape\color{text}%
+  }%
+}

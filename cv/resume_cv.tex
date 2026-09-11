@@ -28,43 +28,11 @@
 
 \documentclass[10pt, a4paper]{awesome-cv} % A4 paper size by default, use 'letterpaper' for US letter
 
+\input{../preamble} % Shared configuration and personal information
+
 \geometry{left=2cm, top=1.5cm, right=2cm, bottom=2cm, footskip=.5cm} % Configure page margins with geometry
 
-\fontdir[../fonts/] % Specify the location of the included fonts
-
-% Color for highlights
-%\colorlet{awesome}{awesome-emerald} % Default colors include: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange, awesome-nephritis, awesome-concrete, awesome-darknight
-\definecolor{awesome}{HTML}{\mycolor} % Uncomment if you would like to specify your own color
-
-% Colors for text - uncomment and modify
-%\definecolor{darktext}{HTML}{414141}
-\definecolor{text}{HTML}{\myCVtextcolor}
-%\definecolor{graytext}{HTML}{414141}
-%\definecolor{lighttext}{HTML}{414141}
-
-\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad} % If you would like to change the social information separator from a pipe (|) to something else
 \linespread{1.25}
-%----------------------------------------------------------------------------------------
-%	PERSONAL INFORMATION
-%----------------------------------------------------------------------------------------
-
-\name{Alessandro}{Santini}
-\address{\myaddress}
-
-\mobile{\myphone}
-\email{\myemail}
-%\homepage{www.posquit0.com}
-\github{\mygithub}
-\linkedin{\mylinkedin}
-%\skype{skypeid}
-%\stackoverflow{SOid}{SOname}
-%\twitter{@twit}
-%\linkedin{linkedin name}
-%\reddit{reddit account}
-%\xing{xing name}
-%\extrainfo{test} % Other text you want to include on this line
-\orcid{\myorcid}
-\position{\myposition} % Your expertise/fields
 %\quote{``Make the change that you want to see in the world."} % A quote or statement
 
 \makecvfooter{\today}{\cvfooter}{\thepage} % Specify the letter footer with 3 arguments: (<left>, <center>, <right>), leave any of these blank if they are	 not needed
