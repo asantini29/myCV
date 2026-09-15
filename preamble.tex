@@ -1,0 +1,55 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shared preamble for every document in this repository
+% (cv/, cover_letter/, research_statement/).
+%
+% Input it right after \documentclass:
+%
+%     \input{../personalinfo}
+%     \documentclass[11pt, a4paper]{awesome-cv}
+%     \input{../preamble}
+%
+% \documentclass deliberately stays in each document: the options differ from
+% one document to the next, and LaTeX Workshop locates a root file by looking
+% for it. Anything else that differs per document (\geometry, \linespread,
+% \thefootnote, the footer) also stays in the document itself.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Location of the shared fonts, relative to each document's own folder
+\fontdir[../fonts/]
+
+% Colors, with the values coming from personalinfo.tex
+\definecolor{awesome}{HTML}{\mycolor}
+\definecolor{text}{HTML}{\myCVtextcolor}
+
+% Colors for text - uncomment and modify to override the class defaults
+%\definecolor{darktext}{HTML}{414141}
+%\definecolor{graytext}{HTML}{414141}
+%\definecolor{lighttext}{HTML}{414141}
+
+% Highlight section titles with the awesome color (the class default, repeated
+% here so it is visible in one place)
+\setbool{acvSectionColorHighlight}{true}
+
+% Separator between the social entries of the header
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+% Highlight TODOs in red
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%	The values live in personalinfo.tex; comment a line out here to drop that
+%	entry from the header of every document.
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+%\photo[circle,noedge,left]{./examples/profile}
+\name{Alessandro}{Santini}
+\address{\myaddress}
+
+\mobile{\myphone}
+\email{\myemail}
+%\homepage{\myhomepage}
+\github{\mygithub}
+\linkedin{\mylinkedin}
+\orcid{\myorcid}
+\position{\myposition} % Your expertise/fields
