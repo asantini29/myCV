@@ -1,0 +1,82 @@
+# Talks and posters, shown on the CV and on the website's Talks page in the
+# order listed (newest first within each type).
+#
+# Each entry needs: type, event, title, date
+#   type: invited | contributed | poster
+#         invited → conferences.tex; contributed and poster → conferences-contributed.tex
+#         (dropped from the short CV)
+# Optional: location
+#           format   (e.g. "panel session"; printed after the title)
+#           website  (false hides the entry on the website only)
+#           url, slides, video   (website only: buttons under the entry)
+#
+# Text: $...$ for math and -- for dashes, as in LaTeX; **bold** and
+# [text](url) as in Markdown. Quote a value that contains ": ".
+
+- type: invited
+  event: LISA AI Hackathon
+  title: Machine Learning in the Global Fit
+  format: discussion session
+  location: ESTEC, Noordwijk, The Netherlands
+  date: July 2026
+
+- type: invited
+  event: Observatoire de la Côte d'Azur
+  title: Advancing LISA Global fit prototypes
+  location: OCA, Nice, France
+  date: May 2026
+
+- type: invited
+  event: ETH Zurich -- Gravitational Physics Group
+  title: Advancing LISA Global fit prototypes
+  location: ETH, Zurich, Switzerland
+  date: March 2026
+
+- type: invited
+  event: LISA without frontiers
+  title: Modelling noise and characterising stochastic signals in LISA
+  format: panel session
+  location: Sexten, Italy
+  date: January 2026
+
+- type: contributed
+  event: EMRI Search and Inference within the LISA Global Fit - Part II
+  title: Multi-source analysis of EMRIs in the Mojito light common dataset
+  location: NUS, Singapore
+  date: July 2026
+
+- type: contributed
+  event: 26th SIGRAV Meeting
+  title: A flexible, GPU-accelerated approach for the joint characterization of LISA instrumental noise and Stochastic Gravitational Wave Backgrounds
+  location: Unimib, Milan, Italy
+  date: September 2025
+
+- type: contributed
+  event: EMRI Search and Inference within the LISA Global Fit - Part I
+  title: 'Don’t reinvent the wheel: including Extreme Mass Ratio Inspirals in the LISA global fit'
+  location: APC, Paris, France
+  date: June 2025
+
+- type: contributed
+  event: Amaldi15
+  title: Black-hole mergers in disk-like environments could explain the observed $q-\chi_{\rm eff}$ correlation
+  location: Online
+  date: July 2023
+
+- type: contributed
+  event: APS April Meeting
+  title: Migration traps in AGN disks and hierarchical mergers as promising origin of the observed $q-\chi_{\rm eff}$ correlation
+  location: Minneapolis, USA
+  date: April 2023
+
+- type: poster
+  event: 15th LISA Symposium
+  title: A flexible approach for the joint characterization of LISA instrumental noise and Stochastic Gravitational-Wave Backgrounds
+  location: UCD, Dublin, Ireland
+  date: July 2024
+
+- type: poster
+  event: 16th LISA Symposium
+  title: Advancing LISA Global Fit prototypes in the time-frequency domain
+  location: Baltimore (MD), USA
+  date: June 2026

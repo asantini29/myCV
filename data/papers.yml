@@ -1,0 +1,18 @@
+# Website-only extras for papers. The papers themselves come from INSPIRE
+# (author:Alessandro.Santini.2) on both the CV and the website; entries here
+# are matched to them by arXiv number. The CV ignores this file.
+#
+# Each entry needs: arxiv, in quotes (unquoted, 2507.06300 is read as a number)
+# Optional: selected  (true lists the paper under "Selected publications" on
+#                      the website's home page)
+#           code, slides, video, poster, data, url   (buttons under the paper)
+
+- arxiv: "2507.06300"
+  selected: true
+
+- arxiv: "2308.12998"
+  selected: true
+
+# - arxiv: "2410.17310"
+#   code: https://github.com/...
+#   slides: https://...

@@ -1,0 +1,36 @@
+# Public outreach, shown on the CV and on the website's Outreach page in the
+# order listed (newest first).
+#
+# Each entry needs: event, title, date
+# Optional: location
+#           language     (printed under the date on the CV)
+#           description  (a paragraph; links as [text](url))
+#           website      (false hides the entry on the website only)
+#           url, slides, video   (website only: buttons under the entry)
+#
+# Text: $...$ for math and -- for dashes, as in LaTeX; **bold** and
+# [text](url) as in Markdown. Quote a value that contains ": ".
+
+- event: Long Night of Astronomy
+  title: 'Sounds of silence: 10 Years of gravitational-wave astronomy.'
+  location: Berlin, Germany
+  date: September 2025
+  language: English
+  description: >-
+    Speaker at the closing event of the Long Night of Astronomy 2025 (webpage
+    [here](https://www.lange-nacht-der-astronomie.de/kosmische-momente-faszinierende-beobachtungen-fuer-die-ganze-familie)),
+    presenting the last 10 years of gravitational-wave astronomy together with
+    8 other researchers from the Max Planck Institute for Gravitational Physics.
+    Audience: > 100 people.
+
+- event: Berlin Science Week
+  title: 'Deciphering black hole symphonies: The new world of gravitational wave astronomy.'
+  location: Berlin, Germany
+  date: November 2024
+  language: English
+  description: >-
+    Speaker at one of the highlight, invited events of Berlin Science Week 2024
+    (webpage [here](https://berlinscienceweek.com/programme/deciphering-black-hole-symphonies-new-world-gravitational-wave-astronomy)),
+    presenting the current status of gravitational-wave astronomy together with
+    7 other researchers from the Max Planck Institute for Gravitational Physics.
+    Audience: > 200 people.

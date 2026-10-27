@@ -1,0 +1,68 @@
+# Education, shown on the CV (all three lists) and on the website (degrees
+# only: About page, and the sidebar on the home page). Order as listed.
+#
+# Each entry needs: degree, institution, location, dates
+# Optional: details  (bullet points, CV only)
+#           short    (degrees only: shorter text for the website's sidebar)
+#           website  (false hides the entry on the website only)
+#
+# Text: $...$ for math and -- for dashes, as in LaTeX; **bold** and
+# [text](url) as in Markdown. Quote a value that contains ": " or starts
+# with "*".
+
+degrees:
+  - degree: Ph.D. in Physics
+    institution: Max Planck Institute for Gravitational Physics
+    location: Potsdam, Germany
+    dates: 2023--present
+    short: Ph.D. Physics, MPI for Gravitational Physics
+    details:
+      - '**Thesis:** The LISA Global Fit'
+      - '**Supervisor:** Dr. Jonathan Gair'
+
+  - degree: Master's Degree in Astrophysics and Space Physics
+    institution: Università degli studi di Milano-Bicocca
+    location: Milan (MI), Italy
+    dates: 2021--2023
+    short: M.Sc. Astrophysics, Milano-Bicocca
+    details:
+      - '**final degree grade:** 110/110 with distinction (cum laude)'
+      - '**Thesis:** Black-hole mergers in disk-like environments could explain  the observed $q-\chi_\mathrm{eff}$ correlation'
+      - '**Supervisors:** Prof. Davide Gerosa, Dr. Roberto Cotesta'
+
+  - degree: Bachelor's Degree in Physics
+    institution: Università degli studi di Milano-Bicocca
+    location: Milan (MI), Italy
+    dates: 2018--2021
+    short: B.Sc. Physics, Milano-Bicocca
+    details:
+      - '**final degree grade:** 110/110 with distinction (cum laude)'
+      - '**Thesis:** Resolution of the Euler equations using the Athena++ code'
+      - '**Supervisor:** Prof. Bruno Giacomazzo'
+
+  - degree: High School Diploma
+    institution: Liceo Scientifico Statale Federigo Enriques
+    location: Lissone (MB), Italy
+    dates: 2013--2018
+    website: false
+    details:
+      - '**Final degree grade:** 97/100'
+
+# CV only
+internships:
+  - degree: Research visit
+    institution: Observatoire de la Côte d'Azur, 1 month
+    location: Nice, France
+    dates: May 2026
+
+  - degree: Erasmus+ Scholarship
+    institution: Johns Hopkins University
+    location: Baltimore (MD), USA
+    dates: April--July 2023
+
+# CV only
+courses:
+  - degree: Data visualization workshop
+    institution: 'Visualize your science -- https://www.visualizeyourscience.com/'
+    location: Potsdam, Germany
+    dates: September 2026
