@@ -20,7 +20,9 @@ TALK_TYPES = ("invited", "contributed", "poster")
 RULE = "%-----------------------\n"
 
 MATH = re.compile(r"(\$[^$]*\$)")
-LINK = re.compile(r"\[([^\]]+)\]\(([^)\s]+)\)")
+# The URL may contain balanced parentheses, e.g. .../wiki/LISA_(spacecraft)
+LINK = re.compile(r"\[([^\]]+)\]\(((?:[^()\s]|\([^()\s]*\))+)\)")
+PARAGRAPH_BREAK = re.compile(r"\s*\n\s*\n\s*")
 BOLD = re.compile(r"\*\*(.+?)\*\*")
 
 
@@ -56,9 +58,11 @@ def _with_links(text):
 
 def latex_text(text: str) -> str:
     """
-    Turn a YAML text field into LaTeX, leaving $...$ math untouched.
+    Turn a YAML text field into LaTeX, leaving $...$ math untouched. Blank
+    lines are joined with a space: a paragraph break inside a \\cventry
+    argument stops the build.
     """
-    parts = MATH.split(str(text))
+    parts = MATH.split(PARAGRAPH_BREAK.sub(" ", str(text)))
     return "".join(part if i % 2 else _with_links(part) for i, part in enumerate(parts))
 
 
@@ -116,8 +120,11 @@ def render_outreach(entries: List[dict]) -> str:
 
 def _education_entry(item):
     details = ""
-    if item.get("details"):
-        items = "".join("\t\\item {%s}\n" % latex_text(d) for d in item["details"])
+    bullets = item.get("details")
+    if isinstance(bullets, str):  # a single bullet written without the list dash
+        bullets = [bullets]
+    if bullets:
+        items = "".join("\t\\item {%s}\n" % latex_text(d) for d in bullets)
         details = "\n\\begin{cvitems}\n" + items + "\\end{cvitems}\n"
     return _entry([
         _field(item, "degree"),

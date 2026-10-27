@@ -106,6 +106,15 @@ class LatexTextTest(unittest.TestCase):
             r"\href{https://a.org/a\%20b\#s}{\underline{t}}",
         )
 
+    def test_link_url_with_parentheses(self):
+        self.assertEqual(
+            latex_text("see [w](https://en.wikipedia.org/wiki/LISA_(spacecraft)))"),
+            r"see \href{https://en.wikipedia.org/wiki/LISA_(spacecraft)}{\underline{w}})",
+        )
+
+    def test_paragraph_break_joined(self):
+        self.assertEqual(latex_text("First.\n\nSecond.\n  \n Third."), "First. Second. Third.")
+
     def test_underscore_and_caret_escaped(self):
         self.assertEqual(latex_text("few_vector N^2"), r"few\_vector N\^{}2")
 
@@ -182,6 +191,11 @@ class RenderTest(unittest.TestCase):
         self.assertIn(
             r"\item {\textbf{Thesis:} The LISA Global Fit}", render_education(EDUCATION)
         )
+
+    def test_details_as_string(self):
+        out = render_education({"degrees": [dict(EDUCATION["degrees"][0], details="**Thesis:** X")]})
+        self.assertIn(r"\item {\textbf{Thesis:} X}", out)
+        self.assertEqual(out.count(r"\item"), 1)
 
     def test_education_subsections(self):
         out = render_education(EDUCATION)
