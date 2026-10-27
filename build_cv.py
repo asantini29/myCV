@@ -59,13 +59,17 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     os.chdir(script_dir)
     
-    # Step 1: Fetch latest publications
-    print("--- Step 1: Updating Publications ---")
+    # Step 1: Talks, outreach and education sections from data/*.yml
+    print("--- Step 1: Generating CV sections from data/ ---")
+    run_command(["python3", "generate_sections.py"])
+
+    # Step 2: Fetch latest publications
+    print("--- Step 2: Updating Publications ---")
     run_command(["python3", "fetch_publications.py"])
 
-    # Step 2: Compile LaTeX
+    # Step 3: Compile LaTeX
     # We compile twice to ensure references/page numbers are correct if needed
-    print(f"--- Step 2: Compiling {'short' if args.short else 'full'} CV with XeLaTeX ---")
+    print(f"--- Step 3: Compiling {'short' if args.short else 'full'} CV with XeLaTeX ---")
      # Print current directory for debugging
     run_command(["xelatex", "-interaction=nonstopmode", source],
                 directory=CV_DIR, env=latex_env())
