@@ -30,9 +30,12 @@ class DataError(Exception):
 
 def _plain(text):
     """
-    Escape the LaTeX specials that can appear in prose and convert **bold**.
+    Escape the LaTeX specials that can appear in prose (unless already escaped,
+    e.g. \\& typed out of habit) and convert **bold**. A $ left here has no
+    closing $, so it is a literal dollar sign.
     """
-    escaped = re.sub(r"([&%#])", r"\\\1", text)
+    escaped = re.sub(r"(?<!\\)([&%#$_])", r"\\\1", text)
+    escaped = re.sub(r"(?<!\\)\^", r"\\^{}", escaped)
     return BOLD.sub(r"\\textbf{\1}", escaped)
 
 
@@ -60,7 +63,7 @@ def latex_text(text: str) -> str:
 
 
 def _field(entry, key):
-    return latex_text(entry.get(key, ""))
+    return latex_text(entry.get(key) or "")
 
 
 def _entry(args):

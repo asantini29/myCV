@@ -106,6 +106,15 @@ class LatexTextTest(unittest.TestCase):
             r"\href{https://a.org/a\%20b\#s}{\underline{t}}",
         )
 
+    def test_underscore_and_caret_escaped(self):
+        self.assertEqual(latex_text("few_vector N^2"), r"few\_vector N\^{}2")
+
+    def test_lone_dollar_escaped(self):
+        self.assertEqual(latex_text("raised $500"), r"raised \$500")
+
+    def test_already_escaped_not_doubled(self):
+        self.assertEqual(latex_text(r"R\&D few\_vector \$5"), r"R\&D few\_vector \$5")
+
     def test_escapes_outside_math(self):
         self.assertEqual(latex_text("R&D 5% #1"), r"R\&D 5\% \#1")
 
@@ -145,6 +154,13 @@ class RenderTest(unittest.TestCase):
             [{"type": "invited", "event": "E", "title": "T", "date": "July 2026"}]
         )
         self.assertIn("\\cventry\n{E}\n{\\emph{T}}\n{}\n{July 2026}\n{}", out)
+
+    def test_blank_fields_are_empty_args(self):
+        out = render_invited(
+            [{"type": "invited", "event": "E", "title": "T", "location": None, "date": "July 2026"}]
+        )
+        self.assertIn("\\cventry\n{E}\n{\\emph{T}}\n{}\n{July 2026}\n{}", out)
+        self.assertNotIn("None", render_outreach([dict(OUTREACH, description=None)]))
 
     def test_order_preserved(self):
         out = render_contributed([POSTER_2024, POSTER_2026])

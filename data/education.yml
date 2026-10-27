@@ -7,8 +7,8 @@
 #           website  (false hides the entry on the website only)
 #
 # Text: $...$ for math and -- for dashes, as in LaTeX; **bold** and
-# [text](url) as in Markdown. Quote a value that contains ": " or starts
-# with "*".
+# [text](url) as in Markdown. Plain & % # _ ^ and a lone $ are escaped for
+# LaTeX automatically. Quote a value that contains ": " or starts with "*".
 
 degrees:
   - degree: Ph.D. in Physics

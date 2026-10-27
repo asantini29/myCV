@@ -11,7 +11,8 @@
 #           url, slides, video   (website only: buttons under the entry)
 #
 # Text: $...$ for math and -- for dashes, as in LaTeX; **bold** and
-# [text](url) as in Markdown. Quote a value that contains ": ".
+# [text](url) as in Markdown. Plain & % # _ ^ and a lone $ are escaped for
+# LaTeX automatically. Quote a value that contains ": ".
 
 - type: invited
   event: LISA AI Hackathon
