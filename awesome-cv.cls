@@ -80,8 +80,11 @@
 \RequirePackage[skins]{tcolorbox}
 % Needed to deal a paragraphs
 \RequirePackage{parskip}
-% Needed for the orcid
-\RequirePackage{academicons}
+% Academicons font, for the ORCID icon. Loaded by file name rather than through
+% the academicons package: since v1.9.6 (TeX Live 2025) the package looks the
+% font up by family name, which on Ubuntu returns the Type 1 Academicons that
+% has no Unicode glyphs, so the icon silently disappears.
+\newfontfamily\acvacademicons{academicons.ttf}
 % Needed to deal hyperlink
 \RequirePackage[hidelinks,unicode]{hyperref}
 \hypersetup{%
@@ -341,7 +344,7 @@
 % Defines writer's quote (optional)
 \newcommand*{\orcid}[1]{\def\@orcid{#1}}
 
-\newcommand*\orcidsymbol{{\aiOrcid}~}
+\newcommand*\orcidsymbol{{\acvacademicons\symbol{"E9D9}}~}
 
 % Defines recipient's information (cover letter only)
 % Usage: \recipient{<recipient name>}{<recipient address>}
@@ -678,6 +681,11 @@
   \end{itemize}
   \end{justify}
   \vspace{-4.0mm}
+  % Leave the \cventry cell in horizontal mode. Since array v2.6i (TeX Live
+  % 2025) a p/m cell that ends in vertical mode is one \baselineskip shorter,
+  % which made the next entry overlap these items; in horizontal mode every
+  % array version ends the cell the same way, as TeX Live 2023 did here.
+  \leavevmode
 }
 
 
