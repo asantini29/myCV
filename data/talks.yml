@@ -13,6 +13,11 @@
 # Text: $...$ for math and -- for dashes, as in LaTeX; **bold** and
 # [text](url) as in Markdown. Plain & % # _ ^ and a lone $ are escaped for
 # LaTeX automatically. Quote a value that contains ": ".
+- type: invited
+  event: De Tenebris ERC kick-off meeting
+  title: Global fit, EMRIs, and other nightmares
+  location: GRAPPA, Amsterdam, The Netherlands
+  date: November 2026
 
 - type: invited
   event: LISA AI Hackathon
@@ -71,13 +76,13 @@
   date: April 2023
 
 - type: poster
-  event: 15th LISA Symposium
-  title: A flexible approach for the joint characterization of LISA instrumental noise and Stochastic Gravitational-Wave Backgrounds
-  location: UCD, Dublin, Ireland
-  date: July 2024
-
-- type: poster
   event: 16th LISA Symposium
   title: Advancing LISA Global Fit prototypes in the time-frequency domain
   location: Baltimore (MD), USA
   date: June 2026
+
+- type: poster
+  event: 15th LISA Symposium
+  title: A flexible approach for the joint characterization of LISA instrumental noise and Stochastic Gravitational-Wave Backgrounds
+  location: UCD, Dublin, Ireland
+  date: July 2024

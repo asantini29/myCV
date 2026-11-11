@@ -600,7 +600,7 @@
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 5cm} R{5cm}}
     \ifempty{#1#3}
       {\entrypositionstyle{#2} & \entrydatestyle{#4} \\}
       {\entrytitlestyle{#1} & \entrylocationstyle{#3} \\

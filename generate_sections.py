@@ -99,6 +99,9 @@ def render_contributed(talks: List[dict]) -> str:
         entries = [_talk(t) for t in talks if t.get("type") == talk_type]
         if entries:
             parts.append("\\cvsubsection{%s}\n\n" % heading + _entries(entries))
+            #send posters to new page
+            if talk_type == "contributed":
+                parts.append("\\newpage\n")
     return "\n".join(parts)
 
 

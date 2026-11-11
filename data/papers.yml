@@ -7,6 +7,9 @@
 #                      the website's home page)
 #           code, slides, video, poster, data, url   (buttons under the paper)
 
+- arxiv: "2611.08596"
+  selected: true
+
 - arxiv: "2507.06300"
   selected: true
 

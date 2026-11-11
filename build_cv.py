@@ -5,8 +5,8 @@ import os
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 CV_DIR = "cv"  # Directory where the CV LaTeX files are located
-CV_SOURCE = "resume_cv.tex"  # Full CV
-CV_SOURCE_SHORT = "resume_cv_short.tex"  # Same document minus the long-form sections
+CV_SOURCE = "santini_cv.tex"  # Full CV
+CV_SOURCE_SHORT = "santini_cv_short.tex"  # Same document minus the long-form sections
 
 def latex_env():
     """

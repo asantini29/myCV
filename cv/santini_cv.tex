@@ -50,6 +50,7 @@
 
 \input{cv-sections/education.tex}
 % \input{cv-sections/grants.tex}
+\clearpage
 \input{cv-sections/skills.tex}
 
 %\newpage % Force a new page for looks
@@ -61,7 +62,7 @@
 % built by `python build_cv.py --short`)
 \ifdefined\shortcv\else
   \input{cv-sections/conferences-contributed.tex}
-  \newpage
+  % \newpage
   \input{cv-sections/publications.tex}
 \fi
 %

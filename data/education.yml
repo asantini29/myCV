@@ -51,12 +51,16 @@ degrees:
 # CV only
 internships:
   - degree: Research visit
+    institution: ETH Zurich, 1.5 months
+    location: Zurich, Switzerland
+    dates: November 2026
+  - degree: Research visit
     institution: Observatoire de la Côte d'Azur, 1 month
     location: Nice, France
     dates: May 2026
 
   - degree: Erasmus+ Scholarship
-    institution: Johns Hopkins University
+    institution: Johns Hopkins University, 3 months
     location: Baltimore (MD), USA
     dates: April--July 2023
 
