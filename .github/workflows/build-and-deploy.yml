@@ -37,7 +37,7 @@ jobs:
       - name: Prepare deployment directory
         run: |
           mkdir -p deploy
-          cp cv/resume_cv.pdf deploy/
+          cp cv/santini_cv.pdf deploy/
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
